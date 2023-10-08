@@ -1,0 +1,48 @@
+#totalPages{
+    position: absolute;
+    bottom: 0;
+    margin: 10px;
+    font-size: 18px;
+    color: #4a4a4a;
+}
+.failed-fetch{
+    position: relative;
+    width: fit-content;
+    margin: -67.75px auto;
+    top: 50%;
+    text-align: center;
+}
+.retry:hover{
+    background: rgba(0,0,0,.08);
+}
+.retry{
+    box-sizing: border-box;
+    color: rgb(0, 113, 235);
+    display: inline-flex;
+    font-size: 17px;
+    font-weight: 600;
+    height: 30px;
+    justify-content: center;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    align-items: center;
+    border-radius: 8px;
+    width: 530px;
+    -webkit-font-smoothing: antialiased;
+}
+.retryImg{
+    box-sizing: border-box;
+    fill: rgb(0, 113, 235);
+}
+.message{
+    color: rgba(0, 0, 0, 0.48);
+    font-size: 17px;
+    height: 31px;
+    line-height: 21px;
+    margin-block-end: 0px;
+    margin-block-start: 0px;
+    -webkit-font-smoothing: antialiased;
+}
+.cloudImg{
+    fill: rgb(210, 210, 215);
+}
