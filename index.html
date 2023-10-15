@@ -21,7 +21,15 @@
             </div>
             <div class="background-main">
                 <div class="center">
-                    <p id="totalPages"></p>
+                    <div class="pagesPanel">
+                        <p id="totalPages"></p>
+                        <div class="pagesScroller"></div>
+                    </div>
+                    <div id="mobile-bottom">
+                        <p id="totalPages-mobile"></p>
+                    </div>
+                    <div id="dark"></div>
+                    <div class="pageContent"></div>
                 </div>
                 <div class="top">
                     <p class="homepage-text">围脖主页</p>
@@ -42,7 +50,7 @@
                 <div class="tabs">
                     <h1 class="tab-text">导航栏</h1>
                     <a href="https://bananacake.top/">
-                        <div class="tab tab-home">
+                        <div class="tab-hidden tab-home">
                             <img src="https://bananacake.top/img/house.svg" class="tab-img-home"></img>
                             <p class='tab-texts'>主页</p>
                         </div>
