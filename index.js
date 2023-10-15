@@ -87,15 +87,17 @@ function screenCheck(){
 var page = 'main'
 if(new URL(document.location).searchParams.get('page')!=null){
     page = new URL(document.location).searchParams.get('page')
-    document.getElementsByClassName('pageContent')[0].innerHTML = '<iframe class="iframeBox" src="https://microblog.bananacake.top/pages/' + page + '"></iframe>'
+    document.getElementsByClassName('pageContent')[0].innerHTML = '<iframe class="iframeBox" src="https://microblog.bananacake.top/pages/' + page + '/"></iframe>'
 }
 screenCheck();
 window.onresize = function(){
     screenCheck();
 }
-function pageBarPress(index){
+async function pageBarPress(index){
     if(document.documentElement.clientWidth < document.documentElement.clientHeight){
         document.getElementsByClassName('itemBox')[document.getElementsByClassName('itemBox').length-index].style.cssText = 'border-top: 0.5px solid #c8c8c8; margin: 0; padding-left: 8%;top: 15px; border-radius: 0; background-color: #dcdcdc;'
+        await sleep(3000)
+        document.getElementsByClassName('itemBox')[document.getElementsByClassName('itemBox').length-index].style.cssText = 'border-top: 0.5px solid #c8c8c8; margin: 0 0 0 8%; top: 15px; border-radius: 0;'
     }
 }
 function pageBarPressed(index){
@@ -157,3 +159,4 @@ fetch("https://api.github.com/repos/BananaCakeCN/MicroBlog/contents/pages")
         document.getElementById('totalPages').innerHTML = '共 ' + data.length + ' 条博文'
         document.getElementById('totalPages-mobile').innerHTML = '共 ' + data.length + ' 条博文'
     })
+/*document.activeElement.innerHTML*/
