@@ -1,4 +1,136 @@
-var pages;
+const sleep = ms => new Promise(res => setTimeout(res, ms));
+function loadPage(i){
+    window.location.href = '?page=' + i;
+}
+async function mobileEsc(){
+    document.getElementsByClassName('pageContent')[0].style.cssText = 'animation: 0.5s ease 0s 1 normal forwards running slideOut; width: 100%; top: 51px; background-color: #fff; height: calc(100% - 51px);'
+    document.getElementById('dark').style.cssText = 'animation: 0.5s ease 0s 1 normal forwards running lighter;'
+    await sleep(300)
+    history.go(-1)
+}
+function screenCheck(){
+    if(document.documentElement.clientWidth < document.documentElement.clientHeight){
+        if(document.documentElement.clientHeight < 350||document.documentElement.clientWidth < 340){
+            document.getElementById('screenRev').style.cssText = 'width: 100%; height: 100%; position: fixed; left: 0; top: 0; background-color: #fff;text-align: center;'
+            document.getElementById('screenRev').innerHTML = '<p class="screenRevTex">分辨率过低，请调整窗口大小</p>'
+        }else{
+            document.getElementById('screenRev').style.cssText = ''
+            document.getElementById('screenRev').innerHTML = ''
+        }
+        document.getElementsByClassName('background-main')[0].style.cssText = 'width: 100%; left: 0;'
+        document.getElementsByClassName('tabs')[0].style.cssText = 'display: none;'
+        if(history.length<=1){
+            document.getElementById('return').style.cssText = 'display: none;'
+        }else{
+            document.getElementsByClassName('return-img')[0].src = 'https://bananacake.top/img/return3.svg'
+        }
+        document.querySelector('.top').style.cssText = 'box-shadow: none; background: #f9f9f9;border-bottom: 1px #c8c8c8 solid;height: 50px;'
+        document.querySelector('.homepage-text').style.cssText = 'position: relative;left: auto;text-align: center;color: #000;top: -5px;'
+        document.querySelector('.return2').style.cssText = 'display: none;'
+        document.querySelector('.return').style.cssText = 'top: 10px;background-color: #f9f9f9;'
+        document.getElementsByClassName('pagesPanel')[0].style.cssText = 'width: 100%; border-right: none;'
+        document.getElementById('totalPages').style.cssText = 'display: none;'
+        document.getElementsByClassName('pagesScroller')[0].style.cssText = 'position: absolute; top: 51px; border-top: none; height: calc(100% - 102px);'
+        document.getElementById('mobile-bottom').style.cssText = 'bottom: 0px; height: 50px; width: 100%; background: #f9f9f9; border-top: 1px solid #c8c8c8; position: absolute;'
+        document.getElementById('totalPages-mobile').style.cssText = ''
+        for(var i = 0; i < document.getElementsByClassName('itemBox').length; i++){
+            document.getElementsByClassName('itemBox')[i].style.cssText = 'border-top: 0.5px solid #c8c8c8; margin: 0 0 0 8%; top: 15px; border-radius: 0;'
+            document.getElementsByClassName('itemTime')[i].style.cssText = 'position: absolute; margin: 0; right: 20px; color: #999; top: 13px;'
+            document.getElementsByClassName('itemTitle')[i].style.cssText = 'margin: 0;'
+        }
+        if(page!='main'){
+            document.getElementsByClassName('pageContent')[0].style.cssText = 'animation: 0.5s ease 0s 1 normal forwards running slideIn; width: 100%; top: 51px; background-color: #fff; height: calc(100% - 51px);'
+            document.getElementById('dark').style.cssText = 'animation: 0.5s ease 0s 1 normal forwards running darker;'
+        }
+        if(page!='main'&&document.getElementById('return').childNodes[1].getAttribute('href')!=null){
+            document.getElementById('return').childNodes[1].attributes.removeNamedItem('href')
+            document.getElementById('return').childNodes[1].setAttribute('onclick', 'mobileEsc()')
+        }
+    }else{
+        if(document.documentElement.clientWidth < 850||document.documentElement.clientHeight < 250){
+            document.getElementById('screenRev').style.cssText = 'width: 100%; height: 100%; position: fixed; left: 0; top: 0; background-color: #fff;text-align: center;'
+            document.getElementById('screenRev').innerHTML = '<p class="screenRevTex">分辨率过低，请调整窗口大小</p>'
+        }else{
+            document.getElementById('screenRev').style.cssText = ''
+            document.getElementById('screenRev').innerHTML = ''
+        }
+        document.getElementsByClassName('background-main')[0].style.cssText = ''
+        document.getElementsByClassName('tabs')[0].style.cssText = ''
+        if(history.length<=1){
+            document.getElementsByClassName('return-img')[0].src = 'https://bananacake.top/img/return2.svg'
+            document.getElementById('return').style.cssText = ''
+        }else{
+            document.getElementsByClassName('return-img')[0].src = 'https://bananacake.top/img/return.svg'
+        }
+        document.querySelector('.top').style.cssText = ''
+        document.querySelector('.homepage-text').style.cssText = ''
+        document.querySelector('.return2').style.cssText = ''
+        document.querySelector('.return').style.cssText = ''
+        document.getElementsByClassName('pagesPanel')[0].style.cssText = ''
+        document.getElementById('totalPages').style.cssText = ''
+        document.getElementsByClassName('pagesScroller')[0].style.cssText = ''
+        document.getElementById('mobile-bottom').style.cssText = ''
+        document.getElementById('totalPages-mobile').style.cssText = 'display: none;'
+        for(var i = 0; i < document.getElementsByClassName('itemBox').length; i++){
+            document.getElementsByClassName('itemBox')[i].style.cssText = ''
+            document.getElementsByClassName('itemTime')[i].style.cssText = ''
+            document.getElementsByClassName('itemTitle')[i].style.cssText = ''
+        }
+        document.getElementsByClassName('pageContent')[0].style.cssText = ''
+        document.getElementById('dark').style.cssText = ''
+        if(page!='main'&&document.getElementById('return').childNodes[1].getAttribute('href')==null){
+            document.getElementById('return').childNodes[1].setAttribute('href', 'javascript:history.go(-1)')
+            document.getElementById('return').childNodes[1].attributes.removeNamedItem('onclick')
+        }
+    }
+}
+var page = 'main'
+if(new URL(document.location).searchParams.get('page')!=null){
+    page = new URL(document.location).searchParams.get('page')
+    document.getElementsByClassName('pageContent')[0].innerHTML = '<iframe class="iframeBox" src="https://microblog.bananacake.top/pages/' + page + '"></iframe>'
+}
+screenCheck();
+window.onresize = function(){
+    screenCheck();
+}
+function pageBarPress(index){
+    if(document.documentElement.clientWidth < document.documentElement.clientHeight){
+        document.getElementsByClassName('itemBox')[document.getElementsByClassName('itemBox').length-index].style.cssText = 'border-top: 0.5px solid #c8c8c8; margin: 0; padding-left: 8%;top: 15px; border-radius: 0; background-color: #dcdcdc;'
+    }
+}
+function pageBarPressed(index){
+    if(document.documentElement.clientWidth < document.documentElement.clientHeight){
+        document.getElementsByClassName('itemBox')[document.getElementsByClassName('itemBox').length-index].style.cssText = 'border-top: 0.5px solid #c8c8c8; margin: 0 0 0 8%; top: 15px; border-radius: 0;'
+    }
+}
+async function getPages(len){
+    for(var i = len; i > 0; i--){
+        const index = i
+        await fetch("https://raw.githubusercontent.com/BananaCakeCN/MicroBlog/main/pages/"+index+"/index.json")
+        .then(function(response) {
+            if (response.ok) {
+                return response.json()
+            }
+        })
+        .then(function(data){
+            document.getElementsByClassName('pagesScroller')[0].innerHTML = document.getElementsByClassName('pagesScroller')[0].innerHTML + `
+            <div class="itemBox" onclick="loadPage(` + index + `)" onmousedown="pageBarPress(` + index + `)" onmouseleave="pageBarPressed(` + index + `)">
+                <p class="itemTitle">` + data['title'] + `</p>
+                <p class="itemTime">` + data['time'] + `</p>
+            </div>
+            `
+            if(index==page){
+                document.getElementsByClassName('homepage-text')[0].innerHTML = data['title']
+                document.getElementsByClassName('itemBox')[document.getElementsByClassName('itemBox').length-1].classList.add('itemSelected')
+            }
+            if(document.documentElement.clientWidth < document.documentElement.clientHeight){
+                document.getElementsByClassName('itemBox')[document.getElementsByClassName('itemBox').length-1].style.cssText = 'border-top: 0.5px solid #c8c8c8; margin: 0 0 0 8%; top: 15px; border-radius: 0;'
+                document.getElementsByClassName('itemTime')[document.getElementsByClassName('itemBox').length-1].style.cssText = 'position: absolute; margin: 0; right: 20px; color: #999; top: 13px;'
+                document.getElementsByClassName('itemTitle')[document.getElementsByClassName('itemBox').length-1].style.cssText = 'margin: 0;'
+            }
+        })  
+    }
+}
 fetch("https://api.github.com/repos/BananaCakeCN/MicroBlog/contents/pages")
     .then(function(response){
         if (response.ok) {
@@ -21,17 +153,7 @@ fetch("https://api.github.com/repos/BananaCakeCN/MicroBlog/contents/pages")
         if(data==undefined){
             return;
         }
-        for(var i = 1; i <= data.length; i++){
-            fetch("https://raw.githubusercontent.com/BananaCakeCN/MicroBlog/main/pages/"+i+"/index.json")
-            .then(function(response) {
-                if (response.ok) {
-                    return response.json()
-                }
-            })
-            .then(function(data){
-                console.log(data)
-            })
-        }
+        getPages(data.length)
         document.getElementById('totalPages').innerHTML = '共 ' + data.length + ' 条博文'
+        document.getElementById('totalPages-mobile').innerHTML = '共 ' + data.length + ' 条博文'
     })
-/*document.activeElement.innerHTML*/
