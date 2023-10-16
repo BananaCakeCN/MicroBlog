@@ -1,5 +1,6 @@
 const sleep = ms => new Promise(res => setTimeout(res, ms));
 function loadPage(i){
+    pageBarPressed(i)
     window.location.href = '?page=' + i;
 }
 async function mobileEsc(){
@@ -96,8 +97,6 @@ window.onresize = function(){
 async function pageBarPress(index){
     if(document.documentElement.clientWidth < document.documentElement.clientHeight){
         document.getElementsByClassName('itemBox')[document.getElementsByClassName('itemBox').length-index].style.cssText = 'border-top: 0.5px solid #c8c8c8; margin: 0; padding-left: 8%;top: 15px; border-radius: 0; background-color: #dcdcdc;'
-        await sleep(3000)
-        document.getElementsByClassName('itemBox')[document.getElementsByClassName('itemBox').length-index].style.cssText = 'border-top: 0.5px solid #c8c8c8; margin: 0 0 0 8%; top: 15px; border-radius: 0;'
     }
 }
 function pageBarPressed(index){
@@ -127,6 +126,9 @@ async function getPages(len){
             }
             if(document.documentElement.clientWidth < document.documentElement.clientHeight){
                 document.getElementsByClassName('itemBox')[document.getElementsByClassName('itemBox').length-1].style.cssText = 'border-top: 0.5px solid #c8c8c8; margin: 0 0 0 8%; top: 15px; border-radius: 0;'
+                if(index==page){
+                    document.getElementsByClassName('itemBox')[document.getElementsByClassName('itemBox').length-1].style.cssText = 'border-top: 0.5px solid #c8c8c8; margin: 0; padding-left: 8%;top: 15px; border-radius: 0; background-color: #dcdcdc;'
+                }
                 document.getElementsByClassName('itemTime')[document.getElementsByClassName('itemBox').length-1].style.cssText = 'position: absolute; margin: 0; right: 20px; color: #999; top: 13px;'
                 document.getElementsByClassName('itemTitle')[document.getElementsByClassName('itemBox').length-1].style.cssText = 'margin: 0;'
             }
