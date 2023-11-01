@@ -134,6 +134,7 @@ async function getPages(len){
             }
         })  
     }
+    document.getElementsByClassName('loading')[0].remove()
 }
 fetch("https://api.github.com/repos/BananaCakeCN/MicroBlog/contents/pages")
     .then(function(response){
@@ -161,4 +162,3 @@ fetch("https://api.github.com/repos/BananaCakeCN/MicroBlog/contents/pages")
         document.getElementById('totalPages').innerHTML = '共 ' + data.length + ' 条博文'
         document.getElementById('totalPages-mobile').innerHTML = '共 ' + data.length + ' 条博文'
     })
-/*document.activeElement.innerHTML*/
