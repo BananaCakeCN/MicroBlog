@@ -155,3 +155,18 @@
     text-align: center;
     top: 5px;
 }
+.loading{
+    background-color: #fff;
+    position: absolute;
+    width: 325px;
+    height: calc(100% - 56px);
+    top: 56px;
+}
+.loadingText{
+    font-size: 15px;
+    position: relative;
+    text-align: center;
+    color: #4a4a4a;
+    top: calc(50% - 10.5px);
+    margin: 0;
+}
