@@ -1,4 +1,7 @@
 const sleep = ms => new Promise(res => setTimeout(res, ms));
+if(document.documentElement.clientWidth < document.documentElement.clientHeight){
+    document.getElementsByClassName('loading')[0].style.cssText = 'top: 51px; height: calc(100% - 102px); width: 100%;'
+}
 function loadPage(i){
     pageBarPressed(i)
     window.location.href = '?page=' + i;
