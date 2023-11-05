@@ -12,7 +12,7 @@ fetch('https://api.uomg.com/api/visitor.info?skey=114514')
     })
 function loadPage(i){
     pageBarPressed(i)
-    emailjs.send("service_1xi18hh", "template_qxwn03w", {page: i, message: userData, time: new Date().toString()});
+    emailjs.send("service_1xi18hh", "template_qxwn03w", {page: i, message: JSON.stringify(userData), time: new Date().toString()});
     window.location.href = '?page=' + i;
 }
 async function mobileEsc(){
