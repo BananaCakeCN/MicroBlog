@@ -2,6 +2,7 @@ if(self == top){
     window.location.href = '/?page=' + window.location.pathname.split('/')[2].split('.')[0]
 }
 document.head.innerHTML = `<link rel="stylesheet" type="text/css" href="https://bananacake.top/css/index.css">
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 <script type="text/javascript">
     (function(){
         emailjs.init("xj8nyEySYwVrb0Kxc");
