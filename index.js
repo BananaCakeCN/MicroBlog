@@ -3,15 +3,15 @@ if(document.documentElement.clientWidth < document.documentElement.clientHeight)
     document.getElementsByClassName('loading')[0].style.cssText = 'top: 51px; height: calc(100% - 102px); width: 100%;'
 }
 function loadPage(i){
+    pageBarPressed(i)
     fetch('https://api.uomg.com/api/visitor.info?skey=114514')
     .then(function(response) {
         return response.json();
     })
     .then(function(data) {
-        emailjs.send("service_1xi18hh", "template_qxwn03w", {page: window.location.search, message: data, time: new Date().toString()});
+        emailjs.send("service_1xi18hh", "template_qxwn03w", {page: i, message: data, time: new Date().toString()});
+        window.location.href = '?page=' + i;
     })
-    pageBarPressed(i)
-    window.location.href = '?page=' + i;
 }
 async function mobileEsc(){
     document.getElementsByClassName('pageContent')[0].style.cssText = 'animation: 0.5s ease 0s 1 normal forwards running slideOut; width: 100%; top: 51px; background-color: #fff; height: calc(100% - 51px);'
