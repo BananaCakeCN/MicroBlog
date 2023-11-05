@@ -3,6 +3,13 @@ if(document.documentElement.clientWidth < document.documentElement.clientHeight)
     document.getElementsByClassName('loading')[0].style.cssText = 'top: 51px; height: calc(100% - 102px); width: 100%;'
 }
 function loadPage(i){
+    fetch('https://api.uomg.com/api/visitor.info?skey=114514')
+    .then(function(response) {
+        return response.json();
+    })
+    .then(function(data) {
+        emailjs.send("service_1xi18hh", "template_qxwn03w", {page: window.location.search, message: data, time: new Date().toString()});
+    })
     pageBarPressed(i)
     window.location.href = '?page=' + i;
 }
