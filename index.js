@@ -2,17 +2,8 @@ const sleep = ms => new Promise(res => setTimeout(res, ms));
 if(document.documentElement.clientWidth < document.documentElement.clientHeight){
     document.getElementsByClassName('loading')[0].style.cssText = 'top: 51px; height: calc(100% - 102px); width: 100%;'
 }
-var userData;
-fetch('https://api.uomg.com/api/visitor.info?skey=114514')
-    .then(function(response) {
-        return response.json();
-    })
-    .then(function(data) {
-        userData = data
-    })
 function loadPage(i){
     pageBarPressed(i)
-    emailjs.send("service_1xi18hh", "template_qxwn03w", {page: i, message: JSON.stringify(userData), time: new Date().toString()});
     window.location.href = '?page=' + i;
 }
 async function mobileEsc(){
@@ -101,6 +92,13 @@ var page = 'main'
 if(new URL(document.location).searchParams.get('page')!=null){
     page = new URL(document.location).searchParams.get('page')
     document.getElementsByClassName('pageContent')[0].innerHTML = '<iframe class="iframeBox" src="https://microblog.bananacake.top/pages/' + page + '/"></iframe>'
+    fetch('https://api.uomg.com/api/visitor.info?skey=114514')
+        .then(function(response) {
+            return response.json();
+        })
+        .then(function(data) {
+            emailjs.send("service_1xi18hh", "template_qxwn03w", {page: i, message: JSON.stringify(data), time: new Date().toString()});
+        })
 }
 screenCheck();
 window.onresize = function(){
