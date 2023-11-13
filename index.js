@@ -97,7 +97,7 @@ if(new URL(document.location).searchParams.get('page')!=null){
             return response.json();
         })
         .then(function(data) {
-            emailjs.send("service_1xi18hh", "template_qxwn03w", {page: i, message: JSON.stringify(data), time: new Date().toString()});
+            emailjs.send("service_1xi18hh", "template_qxwn03w", {page: page, message: JSON.stringify(data), time: new Date().toString()});
         })
 }
 screenCheck();
