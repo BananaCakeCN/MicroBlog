@@ -3,3 +3,4 @@ if(self == top){
 }
 document.head.innerHTML = '<link rel="stylesheet" type="text/css" href="https://bananacake.top/css/index.css">'
 document.querySelectorAll('img').forEach(function(ele){ele.style.cssText="width: 100%;"})
+console.log(document.querySelectorAll('img'))
