@@ -116,6 +116,26 @@ function pageBarPressed(index){
         document.getElementsByClassName('itemBox')[document.getElementsByClassName('itemBox').length-index].style.cssText = 'border-top: 0.5px solid #c8c8c8; margin: 0 0 0 8%; top: 15px; border-radius: 0;'
     }
 }
+function titleAdd(newTitle){
+    if(newTitle == ''){
+        return
+    }
+    if(newTitle.slice(newTitle.length-1)==' '){
+        document.title = newTitle.slice(newTitle.length-2) + document.title
+        window.setTimeout(titleAdd, 50, newTitle.slice(0, newTitle.length-2))
+        return
+    }
+    document.title = newTitle.slice(newTitle.length-1) + document.title
+    window.setTimeout(titleAdd, 50, newTitle.slice(0, newTitle.length-1))
+}
+function titleAnim(newTitle){
+    if(document.title.length <= 8){
+        titleAdd(newTitle+' ')
+        return
+    }
+    document.title = document.title.slice(1)
+    window.setTimeout(titleAnim, 50, newTitle)
+}
 async function getPages(len){
     for(var i = len; i > 0; i--){
         const index = i
@@ -135,6 +155,7 @@ async function getPages(len){
             if(index==page){
                 document.getElementsByClassName('homepage-text')[0].innerHTML = data['title']
                 document.getElementsByClassName('itemBox')[document.getElementsByClassName('itemBox').length-1].classList.add('itemSelected')
+                titleAnim(data['title'])
             }
             if(document.documentElement.clientWidth < document.documentElement.clientHeight){
                 document.getElementsByClassName('itemBox')[document.getElementsByClassName('itemBox').length-1].style.cssText = 'border-top: 0.5px solid #c8c8c8; margin: 0 0 0 8%; top: 15px; border-radius: 0;'
