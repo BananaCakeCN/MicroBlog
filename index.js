@@ -40,7 +40,7 @@ function screenCheck(){
         for(var i = 0; i < document.getElementsByClassName('itemBox').length; i++){
             document.getElementsByClassName('itemBox')[i].style.cssText = 'border-top: 0.5px solid #c8c8c8; margin: 0 0 0 8%; top: 15px; border-radius: 0;'
             document.getElementsByClassName('itemTime')[i].style.cssText = 'position: absolute; margin: 0; right: 20px; color: #999; top: 13px;'
-            document.getElementsByClassName('itemTitle')[i].style.cssText = 'margin: 0;'
+            document.getElementsByClassName('itemTitle')[i].style.cssText = 'margin: 0; width: calc(100% - 100px);'
         }
         if(page!='main'){
             document.getElementsByClassName('pageContent')[0].style.cssText = 'animation: 0.5s ease 0s 1 normal forwards running slideIn; width: 100%; top: 51px; background-color: #fff; height: calc(100% - 51px);'
