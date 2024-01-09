@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: /
+Allow: /pages/
+Allow: /index.html
