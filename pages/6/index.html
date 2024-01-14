@@ -1,8 +1,15 @@
-<script src="/redirect.js"></script>
-<p>两周前对Internet Explorer适配了侧边栏，今天开始重写图片查看器。<br>我之前把导航栏设计在左边，并使用模糊背景。在Internet Explorer上实现元素模糊只有用svg一种方法。我是琢磨半天也没想明白如何在IE上让svg中的image标签的高度与屏幕对齐的同时显示在页面最左侧。所以对于1080个像素以上的页面高度，在侧边栏底部会显示模糊的白色矩形。</p>
-<img src="截屏2023-12-10 上午10.40.08.png" style="width: 100%"/>
-<p>写新的图片查看器是因为，我认为IE对于一次性加载并渲染十几张几兆大小的图片组成的列表会很吃力。<br>现在的图片查看器是半成品。css模仿2011年的microsoft.com。写完后实战发现每次加载Internet Explorer都要拦我一下，必须要点Allow blocked content。我也不知道具体是哪里的脚本被拦了，凭感觉是window.location.href（用于解析网址search参数）和window.screen（用于获取分辨率使新窗口居中）这边的问题。反正无论我是在列表主页还是图片新窗口都得被拦。我以打开图片文件的方式新建的窗口你IE不是全窗口贴合显示，而其他浏览器都是贴合；我以打开网页文件的方式新建窗口你IE又要拦。Safari也拦我的新窗口，但是它是在弹出窗口前提示，而你Internet Explorer是在弹出窗口后拦截</p>
-<img src="截屏2023-12-10 上午10.35.44.png" style="width: 100%"/>
-<img src="截屏2023-12-10 上午10.31.57.png" style="width: 100%"/>
-<img src="截屏2023-12-10 上午10.31.11.png" style="width: 100%"/>
-<p>总结就是很难想象十年前写前端的是怎么写前端的</p>
+<html>
+  <head>
+    <title>对Internet Explorer 11的兼容</title>
+  </head>
+  <body>
+    <script src="/redirect.js"></script>
+    <p>两周前对Internet Explorer适配了侧边栏，今天开始重写图片查看器。<br>我之前把导航栏设计在左边，并使用模糊背景。在Internet Explorer上实现元素模糊只有用svg一种方法。我是琢磨半天也没想明白如何在IE上让svg中的image标签的高度与屏幕对齐的同时显示在页面最左侧。所以对于1080个像素以上的页面高度，在侧边栏底部会显示模糊的白色矩形。</p>
+    <img src="截屏2023-12-10 上午10.40.08.png" style="width: 100%"/>
+    <p>写新的图片查看器是因为，我认为IE对于一次性加载并渲染十几张几兆大小的图片组成的列表会很吃力。<br>现在的图片查看器是半成品。css模仿2011年的microsoft.com。写完后实战发现每次加载Internet Explorer都要拦我一下，必须要点Allow blocked content。我也不知道具体是哪里的脚本被拦了，凭感觉是window.location.href（用于解析网址search参数）和window.screen（用于获取分辨率使新窗口居中）这边的问题。反正无论我是在列表主页还是图片新窗口都得被拦。我以打开图片文件的方式新建的窗口你IE不是全窗口贴合显示，而其他浏览器都是贴合；我以打开网页文件的方式新建窗口你IE又要拦。Safari也拦我的新窗口，但是它是在弹出窗口前提示，而你Internet Explorer是在弹出窗口后拦截</p>
+    <img src="截屏2023-12-10 上午10.35.44.png" style="width: 100%"/>
+    <img src="截屏2023-12-10 上午10.31.57.png" style="width: 100%"/>
+    <img src="截屏2023-12-10 上午10.31.11.png" style="width: 100%"/>
+    <p>总结就是很难想象十年前写前端的是怎么写前端的</p>
+  </body>
+</html>
