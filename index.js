@@ -126,6 +126,7 @@ function titleAdd(newTitle){
         return
     }
     document.title = newTitle.slice(newTitle.length-1) + document.title
+    document.getElementsByClassName('homepage-text')[0].innerText = newTitle.slice(newTitle.length) + document.title
     window.setTimeout(titleAdd, 50, newTitle.slice(0, newTitle.length-1))
 }
 function titleAnim(newTitle){
