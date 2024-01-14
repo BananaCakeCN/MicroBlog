@@ -2,5 +2,6 @@ User-agent: *
 Disallow: /
 Allow: /pages/
 Allow: /index.html
+Allow: /sitemap.xml
 
 Sitemap: https://microblog.bananacake.top/sitemap.xml
