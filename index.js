@@ -29,7 +29,7 @@ function screenCheck(){
             document.getElementsByClassName('return-img')[0].src = 'https://bananacake.top/img/return3.svg'
         }
         document.querySelector('.top').style.cssText = 'box-shadow: none; background: #f9f9f9;border-bottom: 1px #c8c8c8 solid;height: 50px;'
-        document.querySelector('.homepage-text').style.cssText = 'position: relative;left: auto;text-align: center;color: #000;top: -5px;'
+        document.querySelector('.homepage-text').style.cssText = 'position: relative; left: auto; text-align: center; color: #000; top: -5px; width: calc(100% - 100px); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; padding: 0 50px;'
         document.querySelector('.return2').style.cssText = 'display: none;'
         document.querySelector('.return').style.cssText = 'top: 10px;background-color: #f9f9f9;'
         document.getElementsByClassName('pagesPanel')[0].style.cssText = 'width: 100%; border-right: none;'
