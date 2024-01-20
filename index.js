@@ -163,6 +163,7 @@ function newGetPages(data){
         }
     }
     document.getElementsByClassName('loading')[0].remove()
+    screencheck()
 }
 fetch("https://api.github.com/repos/BananaCakeCN/MicroBlog/contents/sitemap.xml")
 .then(function(response){
