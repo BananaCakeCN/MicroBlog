@@ -4,7 +4,7 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
     <style>
-      #map{
+      #map1{
         height: 500px;
       }
     </style>
@@ -21,7 +21,7 @@
     <ul>隧道内车道应分隔为独立路径，除非是少数隧道内使用虚线分隔隧道的。</ul>
     <p>具体实例如图（注：此为3月31日的粗略绘制，实际绘制请查看<a href="https://www.openstreetmap.org/changeset/164882851">变更集164882851</a>）</p>
     <img src="https://assets.bananacake.top/attachments/250331/3.png" style="width: 100%;"/>
-    <div id="map"></div>
+    <div id="map1"></div>
     <p>💧</p>
     <h1>相关事件的经过</h1>
     <p>我在3月22日08:13（东八区）收到了发自这位“多伦多用户”的讯息，回复我于1月6日发送的对他的回信。讯息中回复了我对于道路等级和底图影像的相关陈述。另外提及了关于我合并双向道路的行为。</p>
@@ -134,7 +134,7 @@
     <img src="BadMappingsOfFJUT-ST/19.png" style="width: 100%; margin-bottom: 20px;">
     <img src="BadMappingsOfFJUT-ST/20.png" style="width: 100%; margin-bottom: 20px;">
     <script>
-      var map = L.map('map', {attributionControl: false}).setView([26.0512, 119.3585], 18);
+      var map = L.map('map1', {attributionControl: false}).setView([26.0512, 119.3585], 18);
       L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
       L.marker([26.0512, 119.3585]).addTo(map)
         .bindPopup('鳌峰路与鳌港路交叉口')
