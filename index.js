@@ -92,7 +92,7 @@ var page = 'main'
 if(new URL(document.location).searchParams.get('page')!=null){
     page = new URL(document.location).searchParams.get('page')
     document.getElementsByClassName('pageContent')[0].innerHTML = '<iframe class="iframeBox" src="https://microblog.bananacake.top/pages/' + page + '/"></iframe>'
-    fetch('https://2025.ipchaxun.com/')
+    fetch('https://1.1.1.1/cdn-cgi/trace')
         .then(function(response) {
             return response.json();
         })
